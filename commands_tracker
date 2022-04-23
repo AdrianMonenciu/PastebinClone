@@ -16,3 +16,11 @@ command: npm run devStart
 not connectinting to env
 //require('dotenv').config({ path: require('find-config')('.env') })
 command: npm i find-config : finding .env
+
+8- git init : initialise the git
+9- git add . : adding all the files
+10- git commit -m "Description"
+
+heroku
+https://devcenter.heroku.com/articles/heroku-cli
+command: heroku login, heroku git:remote -a pastebin-clone-project
