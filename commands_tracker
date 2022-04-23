@@ -1,0 +1,18 @@
+1- npm init -y : initialize node.js
+2- npm i express ejs express-ejs-layouts : install packages required for the project
+3- npm i --save-dev nodemon : refresh and restart server when saving files
+
+Json - scripts
+4- "start": "node server.js" - start server on production environment
+command: 
+
+5- "devStart": "nodemon server.js" - refresh and restart server after save
+command: npm run devStart
+
+
+6- npm i mongoose : install mongoose for mongodb
+7- npm i --save-dev dotenv : access to local environment
+
+not connectinting to env
+//require('dotenv').config({ path: require('find-config')('.env') })
+command: npm i find-config : finding .env
