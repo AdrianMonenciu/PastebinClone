@@ -15,6 +15,7 @@ app.use(expressLayouts)
 app.use(express.static('public'))
 
 //test
+//
 
 const mongoose = require('mongoose')
 mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true }) // mongodb://localhost/PastebinClodeDB  process.env.DATABASE_URL
