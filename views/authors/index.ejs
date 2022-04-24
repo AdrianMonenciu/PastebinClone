@@ -1,0 +1,12 @@
+<h2>Search Authors/Pastes</h2>
+<form action="/authors" method="GET"> <% /* replace with pastes */ %> 
+    <label>Name</label>
+    <input type="text" name="name" value="<%= searchOptions.name %>"> <% /* replace with pastes */ %> 
+    <button type="submit">Search</button>
+</form>
+<br>
+<% authors.forEach(author => { %>  <% /* replace with pastes */ %> 
+    <br>
+    <div><%= author.name %> </div>  <% /* replace with pastes */ %> 
+    <div><%= author.description %> </div> 
+<% }) %> 
