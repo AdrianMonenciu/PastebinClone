@@ -8,6 +8,11 @@ const authorSchema = new mongoose.Schema({ // replace with pasteSchema
     description: {
         type: String,
         required: true
+    },
+    createdAt: {
+        type: Date,
+        required: true,
+        default: Date.now
     }
 })
 
