@@ -1,15 +1,15 @@
 const express = require('express')
 const router = express.Router()
-const Author = require('../models/author') // Replace with Paste
+const pasteBin = require('../models/pasteBinModel') 
 
 router.get('/', async (req, res) => {
-    let authors 
+    let pastes 
     try {
-        authors = await Author.find().sort({ createdAt: 'desc' }).limit(10).exec()
+        pastes = await pasteBin.find().sort({ createdAt: 'desc' }).limit(10).exec()
     } catch {
-        authors =[]
+        pastes =[]
     }
-    res.render('index', {authors: authors})
+    res.render('index', {pastes: pastes})
 })
 
 module.exports = router

@@ -1,7 +1,9 @@
-<h2>Last 10 recently added authors / pastes</h2>
+<h2>Last 10 recently added pastes:</h2>
 <div>
-    <% authors.forEach(author => { %>  <% /* replace with pastes */ %> 
+    <% pastes.forEach(paste => { %>  
         <br>
-        <%= author.name %> <% /* replace with pastes */ %> 
+        <a href="/pastebin/<%= paste.id  %>">
+            <%= paste.title %> 
+        </a>
         <% }) %> 
     </div>

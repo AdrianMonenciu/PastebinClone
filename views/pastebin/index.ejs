@@ -1,0 +1,17 @@
+<h2>Search Pastes</h2>
+<form action="/pastebin" method="GET"> 
+    <label>Title</label>
+    <input type="text" name="title" value="<%= searchOptions.title %>"> 
+    <button type="submit">Search</button>
+</form>
+<br>
+<% pastes.forEach(paste => { %>  
+    <br>
+    <div><%= paste.title %> </div>  
+    <div><%= paste.description %> </div> 
+    <a href="/pastebin/<%= paste.id %>">View</a>  
+    <a href="/pastebin/<%= paste.id %>/edit">Edit</a>
+    <form method="POST" action="/pastebin/<%= paste.id %>?_method=DELETE">
+        <button type="submit">Delete</button>
+    </form>
+<% }) %> 

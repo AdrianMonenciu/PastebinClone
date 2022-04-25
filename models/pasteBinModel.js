@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
-const authorSchema = new mongoose.Schema({ // replace with pasteSchema
-    name: {  // Replace with Title for pastebin
+const pasteBinSchema = new mongoose.Schema({ 
+    title: { 
         type: String,
         required: true
     },
@@ -16,4 +16,4 @@ const authorSchema = new mongoose.Schema({ // replace with pasteSchema
     }
 })
 
-module.exports = mongoose.model('Author', authorSchema)  // Replace with Paste and pasteSchema
+module.exports = mongoose.model('pasteBin', pasteBinSchema)

@@ -1,0 +1,6 @@
+<h2><%= paste.title %> </h2>
+<div><%= paste.description %></div>
+<a href="/pastebin/<%= paste.id  %>/edit">Edit</a>
+<form method="POST" action="/pastebin/<%= paste.id %>?_method=DELETE">
+    <button type="submit">Delete</button>
+</form>
