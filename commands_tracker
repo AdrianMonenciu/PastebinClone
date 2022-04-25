@@ -28,3 +28,7 @@ command: heroku login, heroku git:remote -a pastebin-clone-project
 
 body-parser
 npm i body-parser
+
+
+
+11: npm i method-override : changes post methods to put and delete

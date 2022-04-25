@@ -9,4 +9,9 @@
     <br>
     <div><%= author.name %> </div>  <% /* replace with pastes */ %> 
     <div><%= author.description %> </div> 
+    <a href="/authors/<%= author.id %>">View</a>  <% /* replace with pastes */ %> 
+    <a href="/authors/<%= author.id %>/edit">Edit</a>
+    <form method="POST" action="/authors/<%= author.id %>?_method=DELETE">
+        <button type="submit">Delete</button>
+    </form>
 <% }) %> 

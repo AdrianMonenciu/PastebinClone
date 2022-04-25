@@ -32,8 +32,7 @@ router.post('/', async (req, res) => {
     })
     try {
         const newAuthor = await author.save() // replace with paste
-        // res.redirect(`authors/${newAuthor.id}`)
-        res.redirect('authors')     // replace with paste
+        res.redirect(`authors/${newAuthor.id}`)   // replace with paste
     } catch {
         res.render('authors/new', { // replace with paste
             author: author,         // replace with paste
@@ -41,6 +40,59 @@ router.post('/', async (req, res) => {
         })
     }
    // res.send(req.body.name) // req.body.name   req.body.description
+})
+
+router.get('/:id', async (req, res) => {
+    try {
+        const author = await Author.findById(req.params.id)
+        res.render('authors/show', { author: author })
+    } catch {
+        res.redirect('/')
+    }
+})
+
+router.get('/:id/edit', async (req, res) => {
+    try {
+        const author = await Author.findById(req.params.id) // replace with paste
+        res.render('authors/edit', { author: author}) // replace with paste
+    } catch { 
+        res.redirect('/authors')  // replace with paste
+    }
+})
+
+router.put('/:id', async (req, res) => {
+    let author
+    try {
+        author = await Author.findById(req.params.id) // replace with paste
+        author.name = req.body.name   // replace with paste
+        author.description = req.body.description // replace with paste
+        await author.save() // replace with paste
+        res.redirect(`/authors/${author.id}`)   // replace with paste
+    } catch {
+        if (author == null) {
+            res.redirect('/')
+        } else {
+            res.render('authors/edit', { // replace with paste
+                author: author,         // replace with paste
+                errorMessage: 'Error updating Author'
+            })
+        }
+    }
+})
+
+router.delete('/:id', async (req, res) => {
+    let author
+    try {
+        author = await Author.findById(req.params.id) // replace with paste
+        await author.remove() // replace with paste
+        res.redirect('/authors')   // replace with paste
+    } catch {
+        if (author == null) {
+            res.redirect('/')
+        } else {
+            res.redirect(`/authors/${author.id}`) // replace with paste
+        }
+    }
 })
 
 module.exports = router
