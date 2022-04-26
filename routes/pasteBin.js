@@ -33,15 +33,11 @@ router.post('/', async (req, res) => {
     try {
         const pasteExist = await pasteBin.findOne({title: req.body.title})
         if (pasteExist == null) {
-            //console.log("Title doesn't Exist")
             const newPaste = await paste.save() 
             res.redirect(`pastebin/${newPaste.id}`)
         } else {
-            //console.log("Title exist")
             throw "Error creating paste. Title already exists"
         }
-        //const newPaste = await paste.save() 
-        //res.redirect(`pastebin/${newPaste.id}`) 
     } catch(err) {
         if (err != "Error creating paste. Title already exists") {
             err = "Error creating paste"
