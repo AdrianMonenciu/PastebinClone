@@ -2,7 +2,7 @@
 <div>
     <% pastes.forEach(paste => { %>  
         <br>
-        <a href="/pastebin/<%= paste.id  %>">
+        <a class="recent-pastes" href="/pastebin/<%= paste.id  %>">
             <%= paste.title %> 
         </a>
         <% }) %> 

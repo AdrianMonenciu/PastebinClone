@@ -1,6 +1,12 @@
-<h2><%= paste.title %> </h2>
-<div><%= paste.description %></div>
-<a href="/pastebin/<%= paste.id  %>/edit">Edit</a>
-<form method="POST" action="/pastebin/<%= paste.id %>?_method=DELETE">
-    <button type="submit">Delete</button>
-</form>
+<h2 class="page-header"><%= paste.title %> </h2>
+<div class="form-row"> 
+    <div class="form-item"><%= paste.description %></div>
+</div>
+<div class="btn-row">
+    <a class="btn btn-primary" href="/pastebin/<%= paste.id  %>/edit">Edit</a>
+    <button class="btn btn-primary" onclick="copyToClipboard('<%= paste.description %>')">Copy</button>
+    <form method="POST" action="/pastebin/<%= paste.id %>?_method=DELETE">
+        <button class="btn btn-danger" type="submit">Delete</button>
+    </form>
+</div>
+    

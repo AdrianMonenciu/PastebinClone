@@ -31,12 +31,24 @@ router.post('/', async (req, res) => {
         description: req.body.description
     })
     try {
-        const newPaste = await paste.save() 
-        res.redirect(`pastebin/${newPaste.id}`) 
-    } catch {
+        const pasteExist = await pasteBin.findOne({title: req.body.title})
+        if (pasteExist == null) {
+            //console.log("Title doesn't Exist")
+            const newPaste = await paste.save() 
+            res.redirect(`pastebin/${newPaste.id}`)
+        } else {
+            //console.log("Title exist")
+            throw "Error creating paste. Title already exists"
+        }
+        //const newPaste = await paste.save() 
+        //res.redirect(`pastebin/${newPaste.id}`) 
+    } catch(err) {
+        if (err != "Error creating paste. Title already exists") {
+            err = "Error creating paste"
+        }
         res.render('pastebin/new', { 
             paste: paste,        
-            errorMessage: 'Error creating Paste'
+            errorMessage: err 
         })
     }
 })
@@ -64,16 +76,24 @@ router.put('/:id', async (req, res) => {
     try {
         paste = await pasteBin.findById(req.params.id) 
         paste.title = req.body.title   
-        paste.description = req.body.description 
-        await paste.save()
-        res.redirect(`/pastebin/${paste.id}`)   
-    } catch {
+        paste.description = req.body.description
+        const pasteExist = await pasteBin.findOne({title: req.body.title})
+        if (pasteExist == null || req.params.id == pasteExist.id) { 
+            await paste.save()
+            res.redirect(`/pastebin/${paste.id}`)
+        } else {
+            throw "Error updating paste. Title already exists"
+        }   
+    } catch(err) {
         if (paste == null) {
             res.redirect('/')
         } else {
+            if (err != "Error updating paste. Title already exists") {
+                err = "Error updating paste"
+            }
             res.render('pastebin/edit', { 
                 paste: paste,         
-                errorMessage: 'Error updating Paste'
+                errorMessage: err
             })
         }
     }

@@ -1,0 +1,24 @@
+.pastebin-row {
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.pastebin-title {
+  font-size: 1.5rem;
+}
+
+.recent-pastes {
+  color: var(--color-text-light);
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 200;
+}
+
+.recent-pastes:hover {
+  color: white;
+}
+
+.pastebin-description {
+  font-size: 1rem;
+  margin-bottom: .25rem;
+}
