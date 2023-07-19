@@ -3,13 +3,15 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 const express = require('express')
-const app = express()
+
+const app = require('express')();
+//const app = express()
 const expressLayouts = require('express-ejs-layouts')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 
-const indexRouter = require('./routes/index')
-const pasteBinRouter = require('./routes/pasteBin') 
+const indexRouter = require('../routes/index')
+const pasteBinRouter = require('../routes/pasteBin') 
 
 app.set('view engine', 'ejs')
 app.set('views', __dirname + '/views')
@@ -29,3 +31,6 @@ app.use('/', indexRouter)
 app.use('/pastebin', pasteBinRouter)
 
 //app.listen(process.env.PORT || 3000)
+
+
+module.exports = app;
